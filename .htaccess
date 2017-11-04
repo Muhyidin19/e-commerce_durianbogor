@@ -1,0 +1,30 @@
+RewriteEngine On
+
+RewriteBase /e-commerce_durianbogor/
+
+
+#rewrite
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+RewriteRule ^(.*)$ $1.php
+
+#error_doc
+
+ErrorDocument 403 http://localhost/e-commerce_durianbogor/404_blank
+ErrorDocument 404 http://localhost/e-commerce_durianbogor/404_blank
+ErrorDocument 500 http://localhost/e-commerce_durianbogor/404_blank
+ErrorDocument 401 http://localhost/e-commerce_durianbogor/404_blank
+ErrorDocument 400 http://localhost/e-commerce_durianbogor/404_blank
+ErrorDocument 303 http://localhost/e-commerce_durianbogor/404_blank
+
+#anti_eksekusi
+
+AddHandler cgi-script .php .pl .py .jsp .asp .html .shtml .sh .cgi
+Options -ExecCGI
+
+#disable_dir
+
+IndexIgnore *
+Options All -Indexes
